@@ -79,7 +79,7 @@ int main() {
 
 	cout << endl << searcher(content, search) << endl << endl;*/
 
-	Validator validator;
+	/*Validator validator;
 
 	string input = "";
 
@@ -136,7 +136,9 @@ int main() {
 
 	stage1.setInput(input);
 
-	stage1.run();
+	stage1.run();*/
+
+	DBValidCalls db;
 
 	return 0;
 }
