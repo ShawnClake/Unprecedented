@@ -16,7 +16,7 @@ Registered under: GNU license
 #include "elementException.h"
 #include "elementType.h"
 #include "elementParser.h"
-#include "elements.h"
+//#include "elements.h"
 //#include <iomanip>
 
 using namespace std;
@@ -30,7 +30,7 @@ ie. <crackers hello how're you crackers> yup i'm a dog
 ie. <banana (banana)contentAfterOpening <strudle (strudle)contentAfterOpening strudle> (strudle)contentAfterClosing banana> (banana)contentAfterClosing
  is all one element.
 */
-class Element : public Elements, ElementType, ElementParser {
+class Element : public ElementType, ElementParser {
 
 public:
 
