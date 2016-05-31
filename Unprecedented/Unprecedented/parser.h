@@ -94,7 +94,7 @@ public:
 		//For making the nested substr:
 		int findEnd = 1; //When findEnd = 0 we found the end of the substr we want. Each < tag adds one, each > subtracts one.
 
-		int check = 0;
+		int check = 1;
 
 		while (findEnd != 0 && check != -1) {
 
