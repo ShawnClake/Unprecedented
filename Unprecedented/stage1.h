@@ -1,4 +1,14 @@
 /*
+=================================================
+UNPRECEDENTED
+An Unprecedented approach to web dev
+Original Author: Shawn Clake
+Official Maintainer: Shawn Clake
+Registered under: GNU license
+=================================================
+*/
+
+/*
 
 STAGE ONE
 ASSEMBLES THE ELEMENTS VECTOR.
@@ -29,6 +39,15 @@ ASSEMBLES THE ELEMENTS VECTOR.
 
 using namespace std;
 
+/**
+Stage1
+Translates a file into the unprecedented data structure
+TODO:
+ * Finish nesting
+ * Fix bugs
+ * Optomize
+
+*/
 class Stage1 : public StructureParser {
 
 private:

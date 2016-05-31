@@ -1,3 +1,13 @@
+/*
+=================================================
+UNPRECEDENTED
+An Unprecedented approach to web dev
+Original Author: Shawn Clake
+Official Maintainer: Shawn Clake
+Registered under: GNU license
+=================================================
+*/
+
 #ifndef __VALIDATOR__
 #define __VALIDATOR__
 
@@ -5,6 +15,14 @@
 
 using namespace std;
 
+/**
+Validator
+Houses basic strings and functions for validating content types:
+ numeric, alpha, alphanumeric, symbols, english
+
+Also capable of exposing the validation strings.
+Also capable of passing custom validation strings to func validate(input, regex)
+*/
 class Validator {
 
 private:

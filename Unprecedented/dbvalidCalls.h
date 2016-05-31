@@ -1,3 +1,13 @@
+/*
+=================================================
+UNPRECEDENTED
+An Unprecedented approach to web dev
+Original Author: Shawn Clake
+Official Maintainer: Shawn Clake
+Registered under: GNU license
+=================================================
+*/
+
 #ifndef __DB_VALID_CALLS__
 #define __DB_VALID_CALLS__
 
@@ -7,6 +17,12 @@
 
 using namespace std;
 
+/**
+DBValidCalls
+Handles the database for call, prefix grammar.
+TODO:
+ Convert to file based database rather than hard coded.
+*/
 class DBValidCalls {
 
 private:

@@ -1,8 +1,23 @@
+/*
+=================================================
+UNPRECEDENTED
+An Unprecedented approach to web dev
+Original Author: Shawn Clake
+Official Maintainer: Shawn Clake
+Registered under: GNU license
+=================================================
+*/
+
 #ifndef __ELEMENT_TYPE__
 #define __ELEMENT_TYPE__
 
 #include "elementTypes.h"
 
+/**
+ElementType
+Stores what type each element is for ease of processing later.
+*Extended by element*
+*/
 class ElementType : public ElementTypes {
 
 private:

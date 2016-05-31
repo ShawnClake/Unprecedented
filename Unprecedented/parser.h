@@ -1,3 +1,13 @@
+/*
+=================================================
+UNPRECEDENTED
+An Unprecedented approach to web dev
+Original Author: Shawn Clake
+Official Maintainer: Shawn Clake
+Registered under: GNU license
+=================================================
+*/
+
 #ifndef __PARSER__
 #define __PARSER__
 
@@ -7,6 +17,12 @@
 
 using namespace std;
 
+/**
+Parser
+The base class for parsing unprecedented formats.
+TODO:
+Optomizations!
+*/
 class Parser {
 
 private:

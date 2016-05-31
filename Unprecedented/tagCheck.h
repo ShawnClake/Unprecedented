@@ -1,3 +1,13 @@
+/*
+=================================================
+UNPRECEDENTED
+An Unprecedented approach to web dev
+Original Author: Shawn Clake
+Official Maintainer: Shawn Clake
+Registered under: GNU license
+=================================================
+*/
+
 #ifndef __TAG_CHECK__
 #define __TAG_CHECK__
 
@@ -7,6 +17,13 @@
 
 using namespace std;
 
+/**
+TagCheck
+Ensures a file has acceptable, matching, closing tags.
+
+TODO:
+Rename class to suit its function.
+*/
 class TagCheck : public Tags {
 
 private:

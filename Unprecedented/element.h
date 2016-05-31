@@ -1,3 +1,13 @@
+/*
+=================================================
+UNPRECEDENTED
+An Unprecedented approach to web dev
+Original Author: Shawn Clake
+Official Maintainer: Shawn Clake
+Registered under: GNU license
+=================================================
+*/
+
 #ifndef __ELEMENT__
 #define __ELEMENT__
 
@@ -11,6 +21,15 @@
 
 using namespace std;
 
+/**
+Element
+Houses the properties and content for each element. An element is a tag block.
+
+ie. <crackers hello how're you crackers> yup i'm a dog
+ is all one element.
+ie. <banana (banana)contentAfterOpening <strudle (strudle)contentAfterOpening strudle> (strudle)contentAfterClosing banana> (banana)contentAfterClosing
+ is all one element.
+*/
 class Element : public Elements, ElementType, ElementParser {
 
 public:

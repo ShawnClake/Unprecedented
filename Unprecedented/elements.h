@@ -1,3 +1,13 @@
+/*
+=================================================
+UNPRECEDENTED
+An Unprecedented approach to web dev
+Original Author: Shawn Clake
+Official Maintainer: Shawn Clake
+Registered under: GNU license
+=================================================
+*/
+
 // Array of elements
 #ifndef __ELEMENTS__
 #define __ELEMENTS__
@@ -6,6 +16,11 @@
 #include <vector>
 #include <iostream>
 
+/**
+Elements
+Extension class for a vector suited to Elements.
+"Collection of elements"
+*/
 class Elements {
 
 private:

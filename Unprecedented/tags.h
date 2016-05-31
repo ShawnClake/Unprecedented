@@ -1,8 +1,23 @@
+/*
+=================================================
+UNPRECEDENTED
+An Unprecedented approach to web dev
+Original Author: Shawn Clake
+Official Maintainer: Shawn Clake
+Registered under: GNU license
+=================================================
+*/
+
 #ifndef __TAGS__
 #define __TAGS__
 
 
-
+/**
+Tags
+Utility functions for acceptable unprecedented tags:
+ ( ) < > { } [ ]
+IsOpen, IsClosed, Matches
+*/
 class Tags {
 
 private:
