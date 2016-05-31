@@ -11,11 +11,14 @@ Registered under: GNU license
 #ifndef __ELEMENT__
 #define __ELEMENT__
 
+#include <vector>
 #include <string>
 #include "elementProps.h"
 #include "elementException.h"
 #include "elementType.h"
 #include "elementParser.h"
+
+
 //#include "elements.h"
 //#include <iomanip>
 
@@ -59,6 +62,8 @@ private:
 
 public:
 
+	vector<Element> nested;
+
 	Element();
 
 	bool didError() { return errors != 0; }
@@ -77,7 +82,8 @@ public:
 	string getContent() { return content; }
 	//string getOutput() { return output; }
 
-	void addChar(char c) { this->content += c; }
+	void addCharAfterOpen(char c) { this->contentAfterOpening += c; }
+	void addCharAfterClose(char c) { this->contentAfterClosing += c; }
 
 	void setClosed() { closed = true; }
 	bool isClosed() { return closed; }
@@ -101,6 +107,8 @@ Element::Element() {
 	call = "";
 	content = "";
 	output = "";
+	contentAfterClosing = "";
+	contentAfterOpening = "";
 	closed = false;
 
 	errors = 0;

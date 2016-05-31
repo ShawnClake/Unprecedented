@@ -16,6 +16,8 @@ Registered under: GNU license
 #include <algorithm>
 #include <fstream>
 
+#include "logger.h"
+
 using namespace std;
 
 /**
@@ -37,40 +39,64 @@ private:
 public:
 	DBValidCalls() { 
 	
+		Logger::use().log("Opening calls DB...");
+
 		ifstream calls("callNames.txt");
 		
+		Logger::use().log("Loading calls DB...");
+
 		if (calls.is_open()) {
 
 			string call;
 
-			while (getline(calls, call))
+			while (getline(calls, call)) {
+
+				Logger::use().log("Adding call: " + call);
+
 				this->calls.push_back(call);
+
+				Logger::use().log(call + " added successfully");
+
+			}
 
 		}
 
 		calls.close();
 
+		Logger::use().log("Calls DB loaded");
+
+		Logger::use().log("Opening prefixes DB...");
+
 		ifstream prefixes("prefixNames.txt");
+
+		Logger::use().log("Loading prefixes DB...");
 
 		if (prefixes.is_open()) {
 
 			string prefix;
 
-			while (getline(prefixes, prefix))
+			while (getline(prefixes, prefix)) {
+
+				Logger::use().log("Adding prefix: " + prefix);
+
 				this->prefixes.push_back(prefix);
+
+				Logger::use().log(prefix + " added successfully");
+
+			}
+
 
 		}
 		
 		prefixes.close();
 
+		Logger::use().log("Prefixes DB loaded");
 
 	};
 
 	bool isCall(string call) { return find(calls.begin(), calls.end(), call) != calls.end(); }
 
 	bool isPrefix(string prefix) { return find(prefixes.begin(), prefixes.end(), prefix) != prefixes.end(); }
-
-
 
 };
 

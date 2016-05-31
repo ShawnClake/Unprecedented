@@ -17,6 +17,7 @@ Registered under: GNU license
 #include <chrono>
 #include <ctime>
 
+
 using namespace std;
 /**
 Logger
@@ -56,6 +57,11 @@ public:
 		}
 
 
+	}
+
+	static Logger& use() {
+		static Logger instance("unprecedented.txt");
+		return instance;
 	}
 
 	~Logger() { output.close(); }

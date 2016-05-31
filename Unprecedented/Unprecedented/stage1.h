@@ -36,6 +36,8 @@ ASSEMBLES THE ELEMENTS VECTOR.
 #include <stack>
 #include "tagCheck.h"
 #include <sstream>
+#include "CustomTypes.h"
+#include "logger.h"
 
 using namespace std;
 
@@ -62,6 +64,18 @@ public:
 	bool run();
 	bool tagCheck(const string& input);
 
+	eCollection getIntermediate() {
+
+		return ELEMENTS.getElements();
+
+	}
+
+	eCollection getFinalElements() {
+
+		return FinalElements.getElements();
+
+	}
+
 
 	void handle(char current) {
 
@@ -77,9 +91,14 @@ public:
 		//cout << "WE FOUND A CALL YAY:" << symbol << endl << endl;
 		if (db.isPrefix(symbol)) {
 
+			Logger::use().log("Found a prefix");
+
 			string keyword = beforeBreak(getInput().substr(getPos() + 1));
 			
 			if (db.isCall(keyword) && (ELEMENTS.empty() || ELEMENTS.top().isClosed())) {
+
+				Logger::use().log("Found a call and an Element is closed on top of the stack.");
+				Logger::use().log("CALL: " + keyword);
 
 				int callLength = (int)keyword.length() + 1;
 
@@ -100,16 +119,40 @@ public:
 
 				//ELEMENTS.top().createWithCall(keyword);
 				
+				Logger::use().log("Found a nested call");
+				Logger::use().log("CALL: " + keyword);
+
 				string imbetween = beforeEndingTag(getInput().substr(getPos()));
+
+				Logger::use().log("Creating nested stage1 object...");
 
 				Stage1 nested(imbetween);
 
+				Logger::use().log("Running nested stage1 object...");
+
+				nested.run();
+
+				Logger::use().log("Grabbing result of nested stage1 object...");
+
+				ELEMENTS.top().nested = nested.getFinalElements();
+
 				addToPos((int)imbetween.length() + 1);
 
+				Logger::use().log("Closing nested stage1 object instance...");
+
+				return;
+
 			}
-			else {
+			else if(!ELEMENTS.empty()) {
 
 				//REGULAR HTML
+
+				Logger::use().log("Found a call prefix without a valid call.. Assuming HTML...");
+
+				if(!ELEMENTS.top().isClosed())
+					ELEMENTS.top().addCharAfterClose(current);
+				else
+					ELEMENTS.top().addCharAfterOpen(current);
 
 			}
 
@@ -120,20 +163,29 @@ public:
 
 			if (subStrExistsFront(getInput().substr(getPos()), (ELEMENTS.top().getCall() + ">"))) {
 
+				Logger::use().log("Found end of a call tag for the element at the top...");
+				Logger::use().log("CALL: " + ELEMENTS.top().getCall());
+
+				Logger::use().log("Setting top stack element to closed...");
+
 				ELEMENTS.top().setClosed();
+
+				Logger::use().log("Moving element into final stack...");
 
 				FinalElements.push(ELEMENTS.pop());
 
 				addToPos((int)FinalElements.top().getCall().length() + 1);
 
-				cout << "YO WE FINISHED A CALL HERE";
+				Logger::use().log("Finished the call...");
 
 				return;
 
 			}
 
-
-			ELEMENTS.top().addChar(current);
+			if (!ELEMENTS.top().isClosed())
+				ELEMENTS.top().addCharAfterClose(current);
+			else
+				ELEMENTS.top().addCharAfterOpen(current);
 
 		}
 
@@ -152,8 +204,17 @@ bool Stage1::tagCheck(const string& input) {
 
 bool Stage1::run() {
 
-	if (!tagCheck(input))
+	Logger::use().log("Running stage1 instance...");
+
+	if (!tagCheck(input)) {
+
+		Logger::use().log("!!!!! Tags are incomplete");
+
 		return false;
+
+	}
+		
+	Logger::use().log("Running parse mechanism...");
 
 	run34();
 

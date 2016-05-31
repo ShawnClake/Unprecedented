@@ -27,6 +27,13 @@ private:
 	std::vector<Element> elements;
 
 public:
+
+	vector<Element> getElements() {
+
+		return elements;
+
+	}
+
 	void create() {
 
 		push(*(new Element));

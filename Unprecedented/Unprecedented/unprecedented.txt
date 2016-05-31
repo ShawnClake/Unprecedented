@@ -1,2 +1,0 @@
- * LOG: unprecedented [Tue May 31 13:14:14 2016]: PROGRAM INIT
- * LOG: unprecedented [Tue May 31 13:14:14 2016]: PROGRAM END

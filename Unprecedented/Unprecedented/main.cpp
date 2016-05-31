@@ -48,6 +48,8 @@ Source File commenting... in progress......
 
 using namespace std;
 
+//public Logger logger("unprecedented", true, true);
+
 /**
 searcher
 Finds whether a substr exists in a string
@@ -80,7 +82,7 @@ int main() {
 
 	cout << endl << searcher(content, search) << endl << endl;*/
 
-	/*Validator validator;
+	Validator validator;
 
 	string input = "";
 
@@ -88,7 +90,7 @@ int main() {
 
 	getline(cin, input);
 
-	if (validator.isAlphaNumeric(input))
+	/*if (validator.isAlphaNumeric(input))
 		cout << "THAT'S A NUMBA WOOP WOOP" << endl << endl;
 	else
 		cout << "YOU EEG THAT'S NOT AN NUMBA. GO BACK TO KINDEEGARDEN" << endl << endl;
@@ -129,7 +131,7 @@ int main() {
 
 		cout << "NOT VALID PREFIX" << endl << endl;
 
-	}
+	}*/
 
 	Stage1 stage1(input);
 
@@ -137,15 +139,16 @@ int main() {
 
 	stage1.setInput(input);
 
-	stage1.run();*/
+	stage1.run();
 
-	Logger logger("unprecedented", true, true);
+	//Logger logger("01unprecedented", true, true);
+	
 
-	logger.log("PROGRAM INIT");
+	/*logger.log("PROGRAM INIT");
 
 	DBValidCalls db;
 
-	logger.log("PROGRAM END");
+	logger.log("PROGRAM END");*/
 
 	return 0;
 }
