@@ -133,6 +133,8 @@ int main() {
 
 	}*/
 
+	Logger::use().log(input);
+
 	Stage1 stage1(input);
 
 	cout << stage1.strReverse(input) << endl << endl;

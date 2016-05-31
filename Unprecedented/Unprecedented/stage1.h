@@ -122,7 +122,7 @@ public:
 				Logger::use().log("Found a nested call");
 				Logger::use().log("CALL: " + keyword);
 
-				string imbetween = beforeEndingTag(getInput().substr(getPos()));
+				string imbetween = beforeEndingTag(getInput().substr(getPos() + 1));
 
 				Logger::use().log("Creating nested stage1 object...");
 
