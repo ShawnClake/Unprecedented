@@ -1,7 +1,7 @@
 # Unprecedented
 An Unprecedented approach to web development
 
-<b>MORE COMING SOON</b>
+<b>http://shawnclake.github.io/Unprecedented/</b>
 
 Unprecedented is a WIP. It is not currently functional and is in its initial development.
 
