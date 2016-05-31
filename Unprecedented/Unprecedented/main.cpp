@@ -44,6 +44,7 @@ Source File commenting... in progress......
 #include "tagCheck.h"
 #include "dbvalidCalls.h"
 #include "stage1.h"
+#include "logger.h"
 
 using namespace std;
 
@@ -79,7 +80,7 @@ int main() {
 
 	cout << endl << searcher(content, search) << endl << endl;*/
 
-	Validator validator;
+	/*Validator validator;
 
 	string input = "";
 
@@ -136,7 +137,15 @@ int main() {
 
 	stage1.setInput(input);
 
-	stage1.run();
+	stage1.run();*/
+
+	Logger logger("unprecedented", true, true);
+
+	logger.log("PROGRAM INIT");
+
+	DBValidCalls db;
+
+	logger.log("PROGRAM END");
 
 	return 0;
 }

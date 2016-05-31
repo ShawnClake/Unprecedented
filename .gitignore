@@ -234,3 +234,7 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/Unprecedented/Unprecedented.sln
+*.db
+/Unprecedented/Unprecedented/Unprecedented.vcxproj.filters
+/Unprecedented/Unprecedented/Unprecedented.vcxproj
