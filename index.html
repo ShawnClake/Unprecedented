@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Unprecedented by ShawnClake</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Unprecedented</h1>
+      <h2 class="project-tagline">An Unprecedented approach to web development</h2>
+      <a href="https://github.com/ShawnClake/Unprecedented" class="btn">View on GitHub</a>
+      <a href="https://github.com/ShawnClake/Unprecedented/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/ShawnClake/Unprecedented/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h3>
+<a id="the-unprecedented-approach" class="anchor" href="#the-unprecedented-approach" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Unprecedented Approach</h3>
+
+<p>The goal of Unprecedented is to take web dev. into unexplored territory. I have 4 main goals in mind: efficient dev time, fast load time, collaboration and seamless. I hope that Unprecedented can help both novice and expert developers easily create their web pages. I take the process of creating web pages straight into the developers hands whilst maintaining compatibility with all other frameworks and pre-processors. You can use an Unprecedented approach with Laravel, Bootstrap, JQuery, Node.js, OctoberCMS and any other framework and libraries you like.</p>
+
+<h3>
+<a id="unprecedented-language" class="anchor" href="#unprecedented-language" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unprecedented Language</h3>
+
+<p>The historic dev life cycle is to setup a framework, and code to the framework. For some, this works great and so we don't want to take that away. Unprecedented is a statically processed language which is used before any other special frameworks and libraries are used. For example, Unprecedented helps you to code and assemble views for Laravel or pages/layouts/partials/contents for OctoberCMS. Think of it like creating the logic of a website in C++ and then having that automatically convert to Javascript. Unprecedented offers you an extremely flexible and powerful language with functions to back it up. What's awesome about Unprecedented, though, is I don't lock you into the Unprecedented format! In fact, the entire point of Unprecedented is to convert your Unprecedented code files into optimized HTML, Javascript, and CSS.</p>
+
+<h3>
+<a id="unprecedented-example" class="anchor" href="#unprecedented-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unprecedented Example</h3>
+
+<p>I want you to pretend for a moment you are ready to public your website to production. Your website's main .html looks a little like:</p>
+
+<h5>
+<a id="total-character-count-563" class="anchor" href="#total-character-count-563" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Total Character Count: 563</em>
+</h5>
+
+<pre><code>&lt;div class="row" id="bob" name="bob"&gt;
+  &lt;div class="col-sm-4 thick-border" id="col1" style="backgorund:#000;color:white;"&gt;
+    &lt;p&gt;
+      Hello welcome to my website! Check out my Youtube channel here: &lt;a class="link-unstyled" href="youtube.com"&gt; Youtube! &lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="col-sm-4 col-sm-offset-4 thick-border" id="col2" style="backgorund:#f44gg3;color:white;"
+    &lt;p&gt;
+      Hey this is a pic of me: &lt;img src="/file/path/to/image.png" alt="I am the pic" id="profile-pic" class="img-round" style="border-style:none;" /&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>An unprecedented approach may look as simple as this:</p>
+
+<h5>
+<a id="total-character-count-495" class="anchor" href="#total-character-count-495" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Total Character Count: 495</em>
+</h5>
+
+<pre><code>&lt;_row
+#:"bob",
+n:"bob";
+
+&lt;**/file/to/column/template.unp
+$:"col1";
+**&gt;
+
+&lt;**/file/to/column/template.unp
+$:"col2",
+_:"col-sm-offset-4",
+.:"backround:#f44gg3;";
+**&gt;
+_&gt;
+
+&lt;@col1
+&lt;p&gt;
+  Hello welcome to my website! Check out my Youtube channel here:
+  &lt;link**youtube.com
+    _:"link-unstyled";
+    Youtube!
+  link&gt;
+&lt;/p&gt;
+@&gt;
+
+&lt;@col2
+&lt;p&gt;
+  Hey this is a pic of me: 
+  &lt;image**/file/path/to/image.png
+    alt:"I am the pic",
+    #:profile-pic,
+    _:img-round,
+    .:"border-style:none;";
+  image&gt;
+&lt;/p&gt;
+@&gt;
+</code></pre>
+
+<p>And then in file: /file/to/column/template.unp</p>
+
+<h5>
+<a id="total-character-count-33" class="anchor" href="#total-character-count-33" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Total Character Count: 33</em>
+</h5>
+
+<pre><code>&lt;_col-sm-4
+  _:"thick-border";
+_&gt;
+</code></pre>
+
+<p>Unprecedented does not restrict you to page formating and tabs/spaces. In fact, you could compact this code quite a bit and still get the exact same translation!</p>
+
+<h5>
+<a id="total-character-count-502" class="anchor" href="#total-character-count-502" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Total Character Count: 502</em>
+</h5>
+
+<pre><code>&lt;!_set a=/file/to/column/template.unp !_&gt;
+&lt;_row #:"bob", n:"bob";
+    &lt;**&lt;!a!&gt; $:"col1"; **&gt;
+    &lt;**&lt;!a!&gt; $:"col2", _:"col-sm-offset-4", .:"backround:#f44gg3;"; **&gt; 
+_&gt;
+
+&lt;@col1
+    &lt;p&gt;
+      Hello welcome to my website! Check out my Youtube channel here:
+      &lt;link**youtube.com _:"link-unstyled"; Youtube! link&gt;
+    &lt;/p&gt;
+@&gt;
+
+&lt;@col2
+    &lt;p&gt;
+      Hey this is a pic of me: 
+      &lt;image**/file/path/to/image.png alt:"I am the pic", #:profile-pic, _:img-round, .:"border-style:none;"; image&gt;
+    &lt;/p&gt;
+@&gt;
+</code></pre>
+
+<h5>
+<a id="total-character-count-31" class="anchor" href="#total-character-count-31" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Total Character Count: 31</em>
+</h5>
+
+<pre><code>&lt;_col-sm-4 _:"thick-border"; _&gt;
+</code></pre>
+
+<h2>
+<a id="analyis-to-come" class="anchor" href="#analyis-to-come" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Analyis To Come</strong>
+</h2>
+
+<p><em>At this point I am just scratching the surface with the unprecedented approach to web dev. Throughout the above code blocks you may see some syntax that has left you wondering, amazed, or hungry for more.</em></p>
+
+<p><em>I understand that Unprecedented may leave you a little confused on what the purpose is. However, Unprecedented is best experienced in person by using the software. What you have read here today barely begins to decribe the core philosphy of Unprecedented.</em></p>
+
+<p><em>Hopefully one day very soon you will be able to expiernce my dream for easy web development :)</em></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/ShawnClake/Unprecedented">Unprecedented</a> is maintained by <a href="https://github.com/ShawnClake">ShawnClake</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
