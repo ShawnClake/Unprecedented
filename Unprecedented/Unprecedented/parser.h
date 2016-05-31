@@ -56,7 +56,7 @@ public:
 
 	}
 
-	string beforeEndingTag(std::string content) {
+	/*string beforeEndingTag(std::string content) {
 
 		//For making the nested substr:
 		int findEnd = 1; //When findEnd = 0 we found the end of the substr we want. Each < tag adds one, each > subtracts one.
@@ -86,6 +86,39 @@ public:
 		int breakPoint = (int)content.substr(0, check).find_last_not_of(validator.strAlphaNumeric());
 
 		return content.substr(0, breakPoint);
+
+	}*/
+
+	string beforeEndingTag(std::string content) {
+
+		//For making the nested substr:
+		int findEnd = 1; //When findEnd = 0 we found the end of the substr we want. Each < tag adds one, each > subtracts one.
+
+		int check = 0;
+
+		while (findEnd != 0 && check != -1) {
+
+			check += (int)content.substr(check).find_first_of("<>");
+
+			if (check != -1) {
+
+				char sym = content[check];
+
+				if (sym == '<')
+					findEnd++;
+				else if (sym == '>')
+					findEnd--;
+
+			}
+
+		}
+
+		if (findEnd != 0)
+			return "";
+
+		//int breakPoint = (int)content.substr(0, check).find_last_not_of(validator.strAlphaNumeric());
+
+		return content.substr(0, check + 1/*breakPoint*/);
 
 	}
 
