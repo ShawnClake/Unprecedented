@@ -45,6 +45,7 @@ Source File commenting... in progress......
 #include "dbvalidCalls.h"
 #include "stage1.h"
 #include "logger.h"
+#include "elementDebug.h"
 
 using namespace std;
 
@@ -133,6 +134,7 @@ int main() {
 
 	}*/
 
+	Logger::use().log("Receiving input string");
 	Logger::use().log(input);
 
 	Stage1 stage1(input);
@@ -142,6 +144,18 @@ int main() {
 	stage1.setInput(input);
 
 	stage1.run();
+
+	Logger::use().log("FINISHED PARSING");
+
+	ElementDebug debugger;
+
+	Logger::use().log("Creating output file...");
+
+	debugger.printToFile(stage1.getFinalElements());
+
+	Logger::use().log("Output file created...");
+
+	Logger::use().log("Stopping program...");
 
 	//Logger logger("01unprecedented", true, true);
 	

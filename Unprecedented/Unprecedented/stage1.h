@@ -57,7 +57,7 @@ private:
 	std::vector<Element> parseStack;
 	Elements FinalElements;
 	Elements ELEMENTS;
-	DBValidCalls db;
+	//DBValidCalls db;
 
 public:
 	Stage1(std::string input) { this->input = input; }
@@ -89,13 +89,21 @@ public:
 		ss >> symbol;
 
 		//cout << "WE FOUND A CALL YAY:" << symbol << endl << endl;
-		if (db.isPrefix(symbol)) {
+		if (DBValidCalls::use().isPrefix(symbol)) {
 
 			Logger::use().log("Found a prefix");
 
 			string keyword = beforeBreak(getInput().substr(getPos() + 1));
 			
-			if (db.isCall(keyword) && (ELEMENTS.empty() || ELEMENTS.top().isClosed())) {
+			if (DBValidCalls::use().isCall(keyword) && (ELEMENTS.empty() || ELEMENTS.top().isClosed())) {
+
+				if (!ELEMENTS.empty()) {
+
+					Logger::use().log("ENDPOINT1: Moving element into final stack...");
+
+					FinalElements.push(ELEMENTS.pop());
+
+				}
 
 				Logger::use().log("Found a call and an Element is closed on top of the stack.");
 				Logger::use().log("CALL: " + keyword);
@@ -115,14 +123,14 @@ public:
 				return;
 
 			}
-			else if (db.isCall(keyword)) {
+			else if (DBValidCalls::use().isCall(keyword)) {
 
 				//ELEMENTS.top().createWithCall(keyword);
 				
 				Logger::use().log("Found a nested call");
 				Logger::use().log("CALL: " + keyword);
 
-				string imbetween = beforeEndingTag(getInput().substr(getPos()));
+				string imbetween = beforeEndingTag(getInput().substr(getPos()), ELEMENTS.top().getCall());
 
 				Logger::use().log("Creating nested stage1 object...");
 
@@ -142,7 +150,7 @@ public:
 
 				ELEMENTS.top().nested = nested.getFinalElements();
 
-				addToPos((int)imbetween.length() + 1);
+				addToPos((int)imbetween.length());
 
 				Logger::use().log("Closing nested stage1 object instance...");
 
@@ -155,10 +163,10 @@ public:
 
 				Logger::use().log("Found a call prefix without a valid call.. Assuming HTML...");
 
-				if(!ELEMENTS.top().isClosed())
-					ELEMENTS.top().addCharAfterClose(current);
-				else
+				if (!ELEMENTS.top().isClosed())
 					ELEMENTS.top().addCharAfterOpen(current);
+				else
+					ELEMENTS.top().addCharAfterClose(current);
 
 			}
 
@@ -176,11 +184,7 @@ public:
 
 				ELEMENTS.top().setClosed();
 
-				Logger::use().log("Moving element into final stack...");
-
-				FinalElements.push(ELEMENTS.pop());
-
-				addToPos((int)FinalElements.top().getCall().length() + 1);
+				addToPos((int)ELEMENTS.top().getCall().length() + 1);
 
 				Logger::use().log("Finished the call...");
 
@@ -189,13 +193,21 @@ public:
 			}
 
 			if (!ELEMENTS.top().isClosed())
-				ELEMENTS.top().addCharAfterClose(current);
-			else
 				ELEMENTS.top().addCharAfterOpen(current);
+			else
+				ELEMENTS.top().addCharAfterClose(current);
 
 		}
 
 		nextPos();
+
+		if (isFinished() && !ELEMENTS.empty()) {
+
+			Logger::use().log("ENDPOINT2: Moving element into final stack...");
+
+			FinalElements.push(ELEMENTS.pop());
+
+		}
 
 	}
 

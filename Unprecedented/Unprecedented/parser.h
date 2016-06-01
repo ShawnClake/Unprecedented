@@ -14,6 +14,7 @@ Registered under: GNU license
 #include <string>
 #include <algorithm>
 #include "Validator.h"
+#include "logger.h"
 
 using namespace std;
 
@@ -89,7 +90,7 @@ public:
 
 	}*/
 
-	string beforeEndingTag(std::string content) {
+	/*string beforeEndingTag(std::string content, string call) {
 
 		//For making the nested substr:
 		int findEnd = 1; //When findEnd = 0 we found the end of the substr we want. Each < tag adds one, each > subtracts one.
@@ -118,7 +119,81 @@ public:
 
 		//int breakPoint = (int)content.substr(0, check).find_last_not_of(validator.strAlphaNumeric());
 
-		return content.substr(0, check + 1/*breakPoint*/);
+		return content.substr(0, check + 1/*breakPoint*///);
+
+	//}*/
+
+	/*string beforeEndingTag(std::string content, string call) {
+
+		//For making the nested substr:
+		int findEnd = 2; //When findEnd = 0 we found the end of the substr we want. Each < tag adds one, each > subtracts one.
+
+		int check = 1;
+
+		int total = 1;
+
+		Logger::use().log("Content: " + content);
+
+		while (findEnd != 0 && check != -1) {
+
+			total += (int)content.substr(check).find_first_of("<>");
+			Logger::use().log(content.substr(check) + "CHAR AT THERE: " + content[check]);
+
+			check = total;
+
+			if (check != -1) {
+				Logger::use().log("Found Checkpoint");
+				cout << "CHECKPOINT: " << check << endl;
+				char sym = content[check];
+
+				if (sym == '<')
+					findEnd++;
+				else if (sym == '>')
+					findEnd--;
+
+				cout << findEnd << endl;
+
+			}
+
+		}
+
+		
+
+		if (findEnd != 0) {
+			return "";
+			Logger::use().log("findEnd=" + findEnd);
+		}
+			
+
+		//int breakPoint = (int)content.substr(0, check).find_last_not_of(validator.strAlphaNumeric());
+
+		return content.substr(0, check + 1/*breakPoint*///);
+
+		//return content.substr(0, (int)content.find(call));
+
+	//}*/
+
+	string beforeEndingTag(std::string content, string call) {
+
+		int findEnd = 1;
+
+		for (int i = 0; i < (int)content.length(); i++) {
+
+			if (content[i] == '<')
+				findEnd++;
+			else if (content[i] == '>')
+				findEnd--;
+
+			//if(findEnd == 0)
+			//	cout << endl << endl << "DEBUG: " << i << "   " << call << "   " << content.substr(i - (int)call.length(), (int)call.length()) << endl << endl;
+
+			if (findEnd == 0 && content.substr(i - (int)call.length(), (int)call.length()) == call) {
+
+				return content.substr(0, i - (int)call.length()); //- (int)call.length());
+
+			}
+
+		}
 
 	}
 

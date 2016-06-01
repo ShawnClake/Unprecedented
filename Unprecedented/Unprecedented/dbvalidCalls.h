@@ -98,6 +98,11 @@ public:
 
 	bool isPrefix(string prefix) { return find(prefixes.begin(), prefixes.end(), prefix) != prefixes.end(); }
 
+	static DBValidCalls& use() {
+		static DBValidCalls instance;
+		return instance;
+	}
+
 };
 
 
