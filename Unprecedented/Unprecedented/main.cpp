@@ -41,8 +41,6 @@ Source File commenting... in progress......
 #include <iomanip>
 #include <string>
 #include "Validator.h"
-#include "tagCheck.h"
-#include "dbvalidCalls.h"
 #include "stage1.h"
 #include "logger.h"
 #include "elementDebug.h"
@@ -57,10 +55,9 @@ Finds whether a substr exists in a string
 @Params string content, string search
 @Return string
 */
-string searcher(string& content, string& search) {
-
-	return (((int)content.find(search) > -1) ? "YES" : "NOPE");
-
+string searcher(string& content, string& search)
+{
+	return ((int(content.find(search)) > -1) ? "YES" : "NOPE");
 }
 
 /**
@@ -69,8 +66,8 @@ Entry point. Currently functioning as a test driver.
 @Params
 @Return int
 */
-int main() {
-
+int main()
+{
 	/*string content = "", search = "";
 
 	cout << "Enter a string: ";
@@ -158,7 +155,7 @@ int main() {
 	Logger::use().log("Stopping program...");
 
 	//Logger logger("01unprecedented", true, true);
-	
+
 
 	/*logger.log("PROGRAM INIT");
 

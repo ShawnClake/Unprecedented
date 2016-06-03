@@ -20,10 +20,12 @@ Translates string based properties into a function property data structure
 TODO:
 Implmentation
 */
-class PropParser : Parser {
-
-
-
+class PropParser : Parser
+{
+protected:
+	~PropParser()
+	{
+	}
 };
 
 

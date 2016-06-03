@@ -11,8 +11,6 @@ Registered under: GNU license
 #ifndef __ELEMENT_TYPES__
 #define __ELEMENT_TYPES__
 
-#include <string>
-
 /**
 ElementTypes
 Base class for types of elements
@@ -20,16 +18,20 @@ Base class for types of elements
 TODO:
 Implmentation
 */
-class ElementTypes {
-
+class ElementTypes
+{
 protected:
-	std::string default;
+	~ElementTypes()
+	{
+	}
+
+	std::string tdefault;
 
 public:
-	ElementTypes() { this->default = "html"; }
-
-
-
+	ElementTypes()
+	{
+		this->tdefault = "html";
+	}
 };
 
 

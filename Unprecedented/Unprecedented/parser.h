@@ -11,10 +11,7 @@ Registered under: GNU license
 #ifndef __PARSER__
 #define __PARSER__
 
-#include <string>
-#include <algorithm>
 #include "Validator.h"
-#include "logger.h"
 
 using namespace std;
 
@@ -24,7 +21,24 @@ The base class for parsing unprecedented formats.
 TODO:
 Optomizations!
 */
-class Parser {
+class Parser
+{
+protected:
+	Parser(const string& input, int length, int position, char symbol, bool complete, const Validator& validator)
+		: input(input),
+		  length(length),
+		  position(position),
+		  symbol(symbol),
+		  complete(complete),
+		  validator(validator)
+	{
+	}
+
+	Parser();
+
+	~Parser()
+	{
+	}
 
 private:
 	string input;
@@ -40,21 +54,24 @@ private:
 
 public:
 
-	bool substrExists(const std::string& content, const std::string& search) { return (((int)content.find(search) > -1)); }
-
-	int subStrExistsFront(const std::string& content, const std::string& search) { 
-		return (((int)content.substr(0, (int)search.length()).find(search) > -1 ? (int)search.length() : 0)); 
+	static bool substrExists(const std::string& content, const std::string& search)
+	{
+		return ((int(content.find(search)) > -1));
 	}
 
-	string beforeBreak(const std::string& content) {
+	static int subStrExistsFront(const std::string& content, const std::string& search)
+	{
+		return ((int(content.substr(0, int(search.length())).find(search)) > -1 ? int(search.length()) : 0));
+	}
 
-		int breakPoint = (int)content.find_first_not_of(validator.strAlphaNumeric());
+	string beforeBreak(const std::string& content) const
+	{
+		int breakPoint = int(content.find_first_not_of(validator.strAlphaNumeric()));
 
 		if (breakPoint <= 0)
 			return "";
 
 		return content.substr(0, breakPoint);
-
 	}
 
 	/*string beforeEndingTag(std::string content) {
@@ -169,16 +186,16 @@ public:
 
 		return content.substr(0, check + 1/*breakPoint*///);
 
-		//return content.substr(0, (int)content.find(call));
+	//return content.substr(0, (int)content.find(call));
 
 	//}*/
 
-	string beforeEndingTag(std::string content, string call) {
+	static string beforeEndingTag(std::string content, string call)
+	{
+		auto findEnd = 1;
 
-		int findEnd = 1;
-
-		for (int i = 0; i < (int)content.length(); i++) {
-
+		for (int i = 0; i < int(content.length()); i++)
+		{
 			if (content[i] == '<')
 				findEnd++;
 			else if (content[i] == '>')
@@ -187,90 +204,90 @@ public:
 			//if(findEnd == 0)
 			//	cout << endl << endl << "DEBUG: " << i << "   " << call << "   " << content.substr(i - (int)call.length(), (int)call.length()) << endl << endl;
 
-			if (findEnd == 0 && content.substr(i - (int)call.length(), (int)call.length()) == call) {
-
-				return content.substr(0, i - (int)call.length()); //- (int)call.length());
-
+			if (findEnd == 0 && content.substr(i - int(call.length()), int(call.length())) == call)
+			{
+				return content.substr(0, i - int(call.length())); //- (int)call.length());
 			}
 
+			
 		}
 
+		return nullptr;
 	}
 
-	virtual void handle(char current) {}
+	virtual void handle(char current)
+	{
+	}
 
-	void run34() {
-
+	void run34()
+	{
 		if (input == "" || position != 0 || symbol != NULL || length == NULL || complete != false)
 			return;
 
-		while (!complete) {
-
+		while (!complete)
+		{
 			setSymbol();
 
 			handle(symbol);
 
 			complete = isFinished();
-
 		}
-
 	}
 
-	void setInput(string input) {
-
+	void setInput(string input)
+	{
 		this->input = input;
-		length = (int)input.length();
+		length = int(input.length());
 		position = 0;
 		symbol = NULL;
 		complete = false;
-
 	}
 
-	void nextPos() {
-
+	void nextPos()
+	{
 		position++;
-
 	}
 
-	void addToPos(int pos) {
-
-		if(position + pos <= length)
+	void addToPos(int pos)
+	{
+		if (position + pos <= length)
 			position += pos;
-
 	}
 
-	void setSymbol() {
-
+	void setSymbol()
+	{
 		symbol = input[position];
-
 	}
 
-	bool isFinished() {
-
+	bool isFinished() const
+	{
 		return (position == length);
-
 	}
 
-	int getPos() {
-
+	int getPos() const
+	{
 		return position;
-
 	}
 
-	string getInput() {
-
+	string getInput() const
+	{
 		return input;
-
 	}
 
-	string strReverse(string str) {
-
+	static string strReverse(string str)
+	{
 		reverse(str.begin(), str.end());
 
 		return str;
-
 	}
 
+	int getLength() const
+	{
+		return length;
+	}
 };
 
+inline Parser::Parser(): length(0), position(0), symbol(0), complete(false)
+{
+}
 #endif

@@ -18,27 +18,67 @@ ElementType
 Stores what type each element is for ease of processing later.
 *Extended by element*
 */
-class ElementType : public ElementTypes {
+class ElementType : public ElementTypes
+{
+protected:
+	~ElementType()
+	{
+	}
 
 private:
 	std::string type;
 
 public:
 
-	ElementType() { type = this->default; }
-	std::string getType() { return this->type; }
+	ElementType()
+	{
+		type = this->tdefault;
+	}
 
-	bool isType(std::string type) { return type == this->type; }
-	bool isHtml() { return this->type == "html"; }
-	bool isScript() { return this->type == "script"; }
-	bool isStyle() { return this->type == "style"; }
+	string getType() const
+	{
+		return this->type;
+	}
 
-	void setHtml() { this->type = "html"; }
-	void setScript() { this->type = "script"; }
-	void setStyle() { this->type = "style"; }
+	bool isType(string type) const
+	{
+		return type == this->type;
+	}
 
-	void setType(std::string type) { this->type = type; }
+	bool isHtml() const
+	{
+		return this->type == "html";
+	}
 
+	bool isScript() const
+	{
+		return this->type == "script";
+	}
+
+	bool isStyle() const
+	{
+		return this->type == "style";
+	}
+
+	void setHtml()
+	{
+		this->type = "html";
+	}
+
+	void setScript()
+	{
+		this->type = "script";
+	}
+
+	void setStyle()
+	{
+		this->type = "style";
+	}
+
+	void setType(string type)
+	{
+		this->type = type;
+	}
 };
 
 

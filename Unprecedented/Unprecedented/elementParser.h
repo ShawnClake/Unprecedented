@@ -17,10 +17,19 @@ Registered under: GNU license
 ElementParser
 *Potentially replaced by stage1*
 */
-class ElementParser : Parser {
+class ElementParser : Parser
+{
+protected:
+	ElementParser(const string& input, int length, int position, char symbol, bool complete, const Validator& validator)
+		: Parser(input, length, position, symbol, complete, validator)
+	{
+	}
 
+	ElementParser(): Parser() {}
 
-
+	~ElementParser()
+	{
+	}
 };
 
 

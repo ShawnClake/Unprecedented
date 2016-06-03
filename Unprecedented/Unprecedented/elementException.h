@@ -17,10 +17,8 @@ Registered under: GNU license
 ElementException
 Exception class relating to elements
 */
-class ElementException : Exception {
-
-
-
+class ElementException : Exception
+{
 };
 
 

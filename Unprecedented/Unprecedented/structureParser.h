@@ -12,22 +12,19 @@ Registered under: GNU license
 #define __STRUCTURE_PARSER__
 
 #include "parser.h"
-#include "dbvalidCalls.h"
-#include <string>
+
 
 /**
 StructureParser
 **Potentially replaced by stage1.h
 TODO:
 */
-class StructureParser : public Parser {
-
-private:
-	
-
-public:
-	
-
+class StructureParser : public Parser
+{
+protected:
+	~StructureParser()
+	{
+	}
 };
 
 
