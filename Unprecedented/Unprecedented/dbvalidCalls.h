@@ -13,8 +13,9 @@ Registered under: GNU license
 
 #include <string>
 #include <vector>
-#include <algorithm>
-#include <fstream>
+#include "fileIO.h"
+
+#include "logger.h"
 
 using namespace std;
 
@@ -24,10 +25,8 @@ Handles the database for call, prefix grammar.
 TODO:
  Convert to file based database rather than hard coded.
 */
-class DBValidCalls {
-
-private:
-
+class DBValidCalls
+{
 	vector<string> calls;
 
 
@@ -35,43 +34,39 @@ private:
 
 
 public:
-	DBValidCalls() { 
-	
-		ifstream calls("callNames.txt");
+	DBValidCalls()
+	{
 		
-		if (calls.is_open()) {
+		Logger::use().log("Loading calls DB...");
 
-			string call;
+		FileIO::readFileByLine(this->calls, string("callNames.txt"));
 
-			while (getline(calls, call))
-				this->calls.push_back(call);
+		Logger::use().log("Calls DB loaded");
 
-		}
 
-		calls.close();
+		Logger::use().log("Loading prefixes DB...");
 
-		ifstream prefixes("prefixNames.txt");
+		FileIO::readFileByLine(prefixes, string("prefixNames.txt"));
 
-		if (prefixes.is_open()) {
-
-			string prefix;
-
-			while (getline(prefixes, prefix))
-				this->prefixes.push_back(prefix);
-
-		}
-		
-		prefixes.close();
-
+		Logger::use().log("Prefixes DB loaded");
 
 	};
 
-	bool isCall(string call) { return find(calls.begin(), calls.end(), call) != calls.end(); }
+	bool isCall(string call)
+	{
+		return find(calls.begin(), calls.end(), call) != calls.end();
+	}
 
-	bool isPrefix(string prefix) { return find(prefixes.begin(), prefixes.end(), prefix) != prefixes.end(); }
+	bool isPrefix(string prefix)
+	{
+		return find(prefixes.begin(), prefixes.end(), prefix) != prefixes.end();
+	}
 
-
-
+	static DBValidCalls& use()
+	{
+		static DBValidCalls instance;
+		return instance;
+	}
 };
 
 

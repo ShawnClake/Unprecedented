@@ -21,47 +21,48 @@ Elements
 Extension class for a vector suited to Elements.
 "Collection of elements"
 */
-class Elements {
-
-private:
-	std::vector<Element> elements;
+class Elements
+{
+	vector<Element> elements;
 
 public:
-	void create() {
 
-		push(*(new Element));
-
+	vector<Element> getElements() const
+	{
+		return elements;
 	}
 
-	void createWithCall(const string& call) {
+	void create()
+	{
+		push(*(new Element));
+	}
 
+	void createWithCall(const string& call)
+	{
 		create();
 		top().setCall(call);
-
 	}
 
-	void push(Element element) {
-
+	void push(Element element)
+	{
 		elements.push_back(element);
-
 	}
 
-	Element& top() {
-		
-		if(!empty())
+	Element& top()
+	{
+		if (!empty())
 			return elements.back();
-
 	}
 
-	bool empty() {
-
+	bool empty() const
+	{
 		return elements.empty();
-
 	}
 
-	Element pop() {
-
-		if (!empty()) {
+	Element pop()
+	{
+		if (!empty())
+		{
 			Element e = top();
 			elements.pop_back();
 			return e;
@@ -69,10 +70,10 @@ public:
 
 	}
 
-	int size() {
+	int size() const
+	{
 		return elements.size();
 	}
-
 };
 
 #endif

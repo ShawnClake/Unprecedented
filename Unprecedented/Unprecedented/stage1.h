@@ -33,9 +33,11 @@ ASSEMBLES THE ELEMENTS VECTOR.
 #include "element.h"
 #include "elements.h"
 #include "structureParser.h"
-#include <stack>
 #include "tagCheck.h"
 #include <sstream>
+#include "CustomTypes.h"
+#include "logger.h"
+#include "dbvalidCalls.h"
 
 using namespace std;
 
@@ -48,23 +50,40 @@ TODO:
  * Optomize
 
 */
-class Stage1 : public StructureParser {
-
-private:
+class Stage1 : public StructureParser
+{
 	std::string input;
 	std::vector<Element> parseStack;
 	Elements FinalElements;
 	Elements ELEMENTS;
-	DBValidCalls db;
+	//DBValidCalls db;
 
 public:
-	Stage1(std::string input) { this->input = input; }
+	virtual ~Stage1()
+	{
+	}
+
+	explicit Stage1(string input)
+	{
+		this->input = input;
+	}
+
 	bool run();
-	bool tagCheck(const string& input);
+	static bool tagCheck(const string& input);
+
+	eCollection getIntermediate() const
+	{
+		return ELEMENTS.getElements();
+	}
+
+	eCollection getFinalElements() const
+	{
+		return FinalElements.getElements();
+	}
 
 
-	void handle(char current) {
-
+	void handle(char current) override
+	{
 		cout << current << "-";
 
 		stringstream ss;
@@ -75,13 +94,25 @@ public:
 		ss >> symbol;
 
 		//cout << "WE FOUND A CALL YAY:" << symbol << endl << endl;
-		if (db.isPrefix(symbol)) {
+		if (DBValidCalls::use().isPrefix(symbol))
+		{
+			Logger::use().log("Found a prefix");
 
 			string keyword = beforeBreak(getInput().substr(getPos() + 1));
-			
-			if (db.isCall(keyword) && (ELEMENTS.empty() || ELEMENTS.top().isClosed())) {
 
-				int callLength = (int)keyword.length() + 1;
+			if (DBValidCalls::use().isCall(keyword) && (ELEMENTS.empty() || ELEMENTS.top().isClosed()))
+			{
+				if (!ELEMENTS.empty())
+				{
+					Logger::use().log("ENDPOINT1: Moving element into final stack...");
+
+					FinalElements.push(ELEMENTS.pop());
+				}
+
+				Logger::use().log("Found a call and an Element is closed on top of the stack.");
+				Logger::use().log("CALL: " + keyword);
+
+				auto callLength = int(keyword.length()) + 1;
 
 				/*Element* e = new Element();
 				
@@ -94,75 +125,128 @@ public:
 				addToPos(callLength + 1);
 
 				return;
-
 			}
-			else if (db.isCall(keyword)) {
-
+			else if (DBValidCalls::use().isCall(keyword))
+			{
 				//ELEMENTS.top().createWithCall(keyword);
-				
-				string imbetween = beforeEndingTag(getInput().substr(getPos()));
+
+				Logger::use().log("Found a nested call");
+				Logger::use().log("CALL: " + keyword);
+
+				string imbetween = beforeEndingTag(getInput().substr(getPos()), ELEMENTS.top().getCall());
+
+				Logger::use().log("Creating nested stage1 object...");
 
 				Stage1 nested(imbetween);
 
-				addToPos((int)imbetween.length() + 1);
+				Logger::use().log("Setting parsers input...");
 
+				//Logger::use().log("INPUT: " + imbetween);
+
+				nested.setInput(imbetween);
+
+				Logger::use().log("Running nested stage1 object...");
+
+				nested.run();
+
+				Logger::use().log("Grabbing result of nested stage1 object...");
+
+				ELEMENTS.top().nested = nested.getFinalElements();
+
+				addToPos(int(imbetween.length()));
+
+				Logger::use().log("Closing nested stage1 object instance...");
+
+				return;
 			}
-			else {
-
+			else if (!ELEMENTS.empty())
+			{
 				//REGULAR HTML
 
+				Logger::use().log("Found a call prefix without a valid call.. Assuming HTML...");
+
+				if (!ELEMENTS.top().isClosed())
+					ELEMENTS.top().addCharAfterOpen(current);
+				else
+					ELEMENTS.top().addCharAfterClose(current);
 			}
-
 		}
-		else if (!ELEMENTS.empty()) {
-
+		else if (!ELEMENTS.empty())
+		{
 			//cout << "BIGOH";
 
-			if (subStrExistsFront(getInput().substr(getPos()), (ELEMENTS.top().getCall() + ">"))) {
+			if (subStrExistsFront(getInput().substr(getPos()), (ELEMENTS.top().getCall() + ">")))
+			{
+				Logger::use().log("Found end of a call tag for the element at the top...");
+				Logger::use().log("CALL: " + ELEMENTS.top().getCall());
+
+				Logger::use().log("Setting top stack element to closed...");
 
 				ELEMENTS.top().setClosed();
 
-				FinalElements.push(ELEMENTS.pop());
+				addToPos(int(ELEMENTS.top().getCall().length()) + 1);
 
-				addToPos((int)FinalElements.top().getCall().length() + 1);
+				Logger::use().log("Finished the call...");
 
-				cout << "YO WE FINISHED A CALL HERE";
+				if (isFinished() && !ELEMENTS.empty())
+				{
+					Logger::use().log("ENDPOINT3: No after content found. Moving element into final stack...");
+
+					/*if (ELEMENTS.top().getAfterClose() == "")
+						ELEMENTS.top().setAfterClose(nullptr);*/
+
+					FinalElements.push(ELEMENTS.pop());
+				}
 
 				return;
-
 			}
 
-
-			ELEMENTS.top().addChar(current);
-
+			if (!ELEMENTS.top().isClosed())
+				ELEMENTS.top().addCharAfterOpen(current);
+			else
+				ELEMENTS.top().addCharAfterClose(current);
 		}
 
 		nextPos();
 
-	}
+		if (isFinished() && !ELEMENTS.empty())
+		{
+			Logger::use().log("ENDPOINT2: Moving element into final stack...");
 
+			FinalElements.push(ELEMENTS.pop());
+		}
+	}
 };
 
-bool Stage1::tagCheck(const string& input) {
-
+inline bool Stage1::tagCheck(const string& input)
+{
 	TagCheck checker(input);
 	return checker.isBalanced();
-
 }
 
-bool Stage1::run() {
+inline bool Stage1::run()
+{
+	Logger::use().log("Running stage1 instance...");
 
 	if (!tagCheck(input))
+	{
+		Logger::use().log("!!!!! Tags are incomplete");
+
 		return false;
+	}
+
+	Logger::use().log("Running parse mechanism...");
 
 	run34();
 
 	//cout << "BIGOHHHHHHHHH";
 
-	if (FinalElements.empty()) {
+	if (FinalElements.empty())
+	{
 		cout << "empty" << endl;
 	}
-	else {
+	else
+	{
 		cout << "NOT EMPTY" << endl;
 
 		Element e = FinalElements.top();
@@ -173,9 +257,6 @@ bool Stage1::run() {
 	}
 
 	return true;
-
 }
-
-
 
 #endif

@@ -1,13 +1,10 @@
 #ifndef __VALIDATOR__
 #define __VALIDATOR__
 
-#include <string>
-
 using namespace std;
 
-class Validator {
-
-private:
+class Validator
+{
 	string numeric = "0123456789";
 	string alpha = "abcdefghijklmnopqrstuvwxyz";
 	string alphanumeric = numeric + alpha;
@@ -16,45 +13,69 @@ private:
 
 public:
 
-	bool validate(const string& input, const string& regex) { bool passed = true; for (int i = 0; i < (int)input.length(); i++) { if (regex.find(input[i]) == string::npos) { passed = false; i = (int)input.length(); } } return passed; }
-	bool isNumeric(const string& input) { return validate(input, numeric); }
-	bool isAlpha(const string& input) { return validate(input, alpha); }
-	bool isAlphaNumeric(const string& input) { return validate(input, alphanumeric); }
-	bool isSymbols (const string& input) { return validate(input, symbols); }
-	bool isEnglish(const string& input) { return validate(input, english); }
+	static bool validate(const string& input, const string& regex)
+	{
+		auto passed = true;
+		for (auto i = 0; i < int(input.length()); i++)
+		{
+			if (regex.find(input[i]) == string::npos)
+			{
+				passed = false;
+				i = int(input.length());
+			}
+		}
+		return passed;
+	}
 
-	string strNumeric() {
+	bool isNumeric(const string& input) const
+	{
+		return validate(input, numeric);
+	}
 
+	bool isAlpha(const string& input) const
+	{
+		return validate(input, alpha);
+	}
+
+	bool isAlphaNumeric(const string& input) const
+	{
+		return validate(input, alphanumeric);
+	}
+
+	bool isSymbols(const string& input) const
+	{
+		return validate(input, symbols);
+	}
+
+	bool isEnglish(const string& input) const
+	{
+		return validate(input, english);
+	}
+
+	string strNumeric() const
+	{
 		return numeric;
-
 	}
 
-	string strAlpha() {
-
+	string strAlpha() const
+	{
 		return alpha;
-
 	}
 
-	string strAlphaNumeric() {
-
+	string strAlphaNumeric() const
+	{
 		return alphanumeric;
-
 	}
 
-	string strSymbols() {
-
+	string strSymbols() const
+	{
 		return symbols;
-
 	}
 
-	string strEnglish() {
-
+	string strEnglish() const
+	{
 		return english;
-
 	}
-
-
-
 };
 
 

@@ -18,10 +18,12 @@ ElementProps
 Houses the datastructure full of element properties
 1 instance per element
 */
-class ElementProps : PropParser {
-
-
-
+class ElementProps : PropParser
+{
+public:
+	~ElementProps()
+	{
+	}
 };
 
 

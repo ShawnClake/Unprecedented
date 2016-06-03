@@ -11,7 +11,6 @@ Registered under: GNU license
 #ifndef __TAG_CHECK__
 #define __TAG_CHECK__
 
-#include <string>
 #include <stack>
 #include "tags.h"
 
@@ -24,22 +23,20 @@ Ensures a file has acceptable, matching, closing tags.
 TODO:
 Rename class to suit its function.
 */
-class TagCheck : public Tags {
-
-private:
+class TagCheck : public Tags
+{
 	bool balanced;
 
 public:
-	TagCheck(const string& input)
+	explicit TagCheck(const string& input)
 	{
-
 		char symbol;
 		balanced = true;
 		char openSymbol;
 		stack<char> stack;
 
-		for (int i = 0; i < (int)input.length(); i++) {
-
+		for (auto i = 0; i < int(input.length()); i++)
+		{
 			symbol = input[i];
 
 			if (IsOpen(symbol))
@@ -57,10 +54,10 @@ public:
 				}
 			}
 
-			if (!balanced) {
-				i = (int)input.length();
+			if (!balanced)
+			{
+				i = int(input.length());
 			}
-
 		}
 
 		if (!stack.empty())
@@ -73,14 +70,10 @@ public:
 		return 0;*/
 	}
 
-	bool isBalanced() {
-
+	bool isBalanced() const
+	{
 		return balanced;
-
 	}
-
-private: 
-
 
 };
 

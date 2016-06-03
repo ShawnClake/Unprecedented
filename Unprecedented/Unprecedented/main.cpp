@@ -41,12 +41,13 @@ Source File commenting... in progress......
 #include <iomanip>
 #include <string>
 #include "Validator.h"
-#include "tagCheck.h"
-#include "dbvalidCalls.h"
 #include "stage1.h"
 #include "logger.h"
+#include "elementDebug.h"
 
 using namespace std;
+
+//public Logger logger("unprecedented", true, true);
 
 /**
 searcher
@@ -54,10 +55,9 @@ Finds whether a substr exists in a string
 @Params string content, string search
 @Return string
 */
-string searcher(string& content, string& search) {
-
-	return (((int)content.find(search) > -1) ? "YES" : "NOPE");
-
+string searcher(string& content, string& search)
+{
+	return ((int(content.find(search)) > -1) ? "YES" : "NOPE");
 }
 
 /**
@@ -66,8 +66,8 @@ Entry point. Currently functioning as a test driver.
 @Params
 @Return int
 */
-int main() {
-
+int main()
+{
 	/*string content = "", search = "";
 
 	cout << "Enter a string: ";
@@ -80,7 +80,7 @@ int main() {
 
 	cout << endl << searcher(content, search) << endl << endl;*/
 
-	/*Validator validator;
+	Validator validator;
 
 	string input = "";
 
@@ -88,7 +88,7 @@ int main() {
 
 	getline(cin, input);
 
-	if (validator.isAlphaNumeric(input))
+	/*if (validator.isAlphaNumeric(input))
 		cout << "THAT'S A NUMBA WOOP WOOP" << endl << endl;
 	else
 		cout << "YOU EEG THAT'S NOT AN NUMBA. GO BACK TO KINDEEGARDEN" << endl << endl;
@@ -129,7 +129,10 @@ int main() {
 
 		cout << "NOT VALID PREFIX" << endl << endl;
 
-	}
+	}*/
+
+	Logger::use().log("Receiving input string");
+	Logger::use().log(input);
 
 	Stage1 stage1(input);
 
@@ -137,15 +140,28 @@ int main() {
 
 	stage1.setInput(input);
 
-	stage1.run();*/
+	stage1.run();
 
-	Logger logger("unprecedented", true, true);
+	Logger::use().log("FINISHED PARSING");
 
-	logger.log("PROGRAM INIT");
+	ElementDebug debugger;
+
+	Logger::use().log("Creating output file...");
+
+	debugger.printToFile(stage1.getFinalElements());
+
+	Logger::use().log("Output file created...");
+
+	Logger::use().log("Stopping program...");
+
+	//Logger logger("01unprecedented", true, true);
+
+
+	/*logger.log("PROGRAM INIT");
 
 	DBValidCalls db;
 
-	logger.log("PROGRAM END");
+	logger.log("PROGRAM END");*/
 
 	return 0;
 }

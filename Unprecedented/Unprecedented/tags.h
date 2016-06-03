@@ -18,36 +18,30 @@ Utility functions for acceptable unprecedented tags:
  ( ) < > { } [ ]
 IsOpen, IsClosed, Matches
 */
-class Tags {
-
-private:
-
-
+class Tags
+{
 public:
-	bool IsOpen(char symbol)
+	static bool IsOpen(char symbol)
 	{
 		if (symbol == '(' || symbol == '{' || symbol == '[' || symbol == '<')
 			return true;
-		else
-			return false;
+		return false;
 	}
 
-	bool IsClosed(char symbol)
+	static bool IsClosed(char symbol)
 	{
 		if (symbol == ')' || symbol == '}' || symbol == ']' || symbol == '>')
 			return true;
-		else
-			return false;
+		return false;
 	}
 
-	bool Matches(char symbol, char openSymbol)
+	static bool Matches(char symbol, char openSymbol)
 	{
-		return  ((openSymbol == '(' && symbol == ')')
+		return ((openSymbol == '(' && symbol == ')')
 			|| (openSymbol == '{' && symbol == '}')
 			|| (openSymbol == '[' && symbol == ']')
 			|| (openSymbol == '<' && symbol == '>'));
 	}
-
 };
 
 

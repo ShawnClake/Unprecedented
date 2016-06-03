@@ -15,10 +15,8 @@ Registered under: GNU license
 Exception
 Base class for unprecedented exceptions
 */
-class Exception {
-
-
-
+class Exception
+{
 };
 
 
