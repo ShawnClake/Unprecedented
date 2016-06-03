@@ -12,9 +12,9 @@ Registered under: GNU license
 #include <string>
 #include <iostream>
 #include <iomanip>
-#include <fstream>
 
-#include <chrono>
+#include "time.h"
+#include "fileIO.h"
 
 
 using namespace std;
@@ -37,15 +37,13 @@ public:
 		this->name = name;
 		this->doFile = doFile;
 		this->doConsole = doConsole;
-		output.open(name + ".txt");
+		output = FileIO::createFileOutput(name + ".txt");
 	}
 
 	void log(string message)
 	{
-		chrono::time_point<chrono::system_clock> instant;
-		instant = chrono::system_clock::now();
-		auto tInstant = chrono::system_clock::to_time_t(instant);
-		string time = ctime(&tInstant);
+		
+		string time = Time::getCurrentStamp();
 
 		if (doFile)
 		{
@@ -60,12 +58,12 @@ public:
 
 	static Logger& use()
 	{
-		static Logger instance("unprecedented.txt");
+		static Logger instance("unprecedented");
 		return instance;
 	}
 
 	~Logger()
 	{
-		output.close();
+		FileIO::closeFileOutput(output);
 	}
 };

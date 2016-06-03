@@ -8,7 +8,6 @@ using namespace std;
 
 class ElementDebug
 {
-private:
 	Logger* outputStructure;
 
 public:

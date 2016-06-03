@@ -13,7 +13,7 @@ Registered under: GNU license
 
 #include <string>
 #include <vector>
-#include <fstream>
+#include "fileIO.h"
 
 #include "logger.h"
 
@@ -36,53 +36,20 @@ class DBValidCalls
 public:
 	DBValidCalls()
 	{
-		Logger::use().log("Opening calls DB...");
-
-		ifstream calls("callNames.txt");
-
+		
 		Logger::use().log("Loading calls DB...");
 
-		if (calls.is_open())
-		{
-			string call;
-
-			while (getline(calls, call))
-			{
-				Logger::use().log("Adding call: " + call);
-
-				this->calls.push_back(call);
-
-				Logger::use().log(call + " added successfully");
-			}
-		}
-
-		calls.close();
+		FileIO::readFileByLine(this->calls, string("callNames.txt"));
 
 		Logger::use().log("Calls DB loaded");
 
-		Logger::use().log("Opening prefixes DB...");
-
-		ifstream prefixes("prefixNames.txt");
 
 		Logger::use().log("Loading prefixes DB...");
 
-		if (prefixes.is_open())
-		{
-			string prefix;
-
-			while (getline(prefixes, prefix))
-			{
-				Logger::use().log("Adding prefix: " + prefix);
-
-				this->prefixes.push_back(prefix);
-
-				Logger::use().log(prefix + " added successfully");
-			}
-		}
-
-		prefixes.close();
+		FileIO::readFileByLine(prefixes, string("prefixNames.txt"));
 
 		Logger::use().log("Prefixes DB loaded");
+
 	};
 
 	bool isCall(string call)
