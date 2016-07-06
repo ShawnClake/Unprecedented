@@ -44,6 +44,7 @@ Source File commenting... in progress......
 #include "stage1.h"
 #include "logger.h"
 #include "elementDebug.h"
+#include "structureParser.h"
 
 using namespace std;
 
@@ -133,6 +134,16 @@ int main()
 
 	Logger::use().log("Receiving input string");
 	Logger::use().log(input);
+
+	StructureParser checker(input);
+
+	if (!checker.isBalanced3()) {
+
+		Logger::use().log("Invalid Input... Ending Compilation");
+
+		return 0;
+
+	}
 
 	Stage1 stage1(input);
 

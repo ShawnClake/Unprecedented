@@ -32,7 +32,7 @@ ASSEMBLES THE ELEMENTS VECTOR.
 #include <vector>
 #include "element.h"
 #include "elements.h"
-#include "structureParser.h"
+#include "parser.h"
 #include "tagCheck.h"
 #include <sstream>
 #include "CustomTypes.h"
@@ -50,7 +50,7 @@ TODO:
  * Optomize
 
 */
-class Stage1 : public StructureParser
+class Stage1 : public Parser
 {
 	std::string input;
 	std::vector<Element> parseStack;
