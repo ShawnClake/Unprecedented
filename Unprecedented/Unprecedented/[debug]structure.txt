@@ -1,64 +1,64 @@
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======crackers=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Parent Element: Null
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Opening Tag: okay 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Closing Tag:  muchsad
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Has nested: YES
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======crackers=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======pineapple=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Parent Element: crackers
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Opening Tag: sad 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Closing Tag:  yes 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Has nested: YES
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======pineapple=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======crackers=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Parent Element: pineapple
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Opening Tag: calm yourself meme 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Closing Tag:  KK 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Has nested: NO
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======crackers=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======apples=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Parent Element: pineapple
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Opening Tag: HOWDY 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Closing Tag:  cheeseburgers 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Has nested: YES
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======apples=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======crackers=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Parent Element: apples
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Opening Tag: okay 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Closing Tag:  muchsad 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Has nested: YES
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======crackers=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======pineapple=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Parent Element: crackers
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Opening Tag: sad 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Closing Tag:  yes 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Has nested: YES
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======pineapple=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======crackers=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Parent Element: pineapple
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Opening Tag: calm yourself meme 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Closing Tag:  KK 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Has nested: NO
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======crackers=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======apples=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Parent Element: pineapple
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Opening Tag: HOWDY 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Content After Closing Tag:  cheeseburgers 
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]:  *Has nested: NO
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: =======apples=======
- * LOG: [debug]structure [Thu Jun  2 23:45:20 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======crackers=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Parent Element: Null
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Opening Tag: okay 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Closing Tag:  muchsad
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Has nested: YES
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======crackers=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======pineapple=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Parent Element: crackers
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Opening Tag: sad 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Closing Tag:  yes 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Has nested: YES
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======pineapple=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======crackers=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Parent Element: pineapple
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Opening Tag: calm yourself meme 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Closing Tag:  KK 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Has nested: NO
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======crackers=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======apples=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Parent Element: pineapple
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Opening Tag: HOWDY 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Closing Tag:  cheeseburgers 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Has nested: YES
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======apples=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======crackers=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Parent Element: apples
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Opening Tag: okay 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Closing Tag:  muchsad 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Has nested: YES
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======crackers=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======pineapple=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Parent Element: crackers
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Opening Tag: sad 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Closing Tag:  yes 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Has nested: YES
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======pineapple=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======crackers=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Parent Element: pineapple
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Opening Tag: calm yourself meme 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Closing Tag:  KK 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Has nested: NO
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======crackers=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======apples=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Parent Element: pineapple
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Opening Tag: HOWDY 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Content After Closing Tag:  cheeseburgers 
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]:  *Has nested: NO
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: =======apples=======
+ * LOG: [debug]structure [Wed Jun 08 14:29:11 2016]: 
